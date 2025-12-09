@@ -43,11 +43,11 @@ def get_product(
 def create_product(
     product: ProductCreate,
     session: SessionDep
-):
+) -> ProductPublic:
     """Create a new product."""
 
-    db_prodcut = Product.model_validate(product)
-    session.add(db_prodcut)
+    db_product = Product.model_validate(product)
+    session.add(db_product)
     session.commit()
-    session.refresh(db_prodcut)
-    return db_prodcut
+    session.refresh(db_product)
+    return db_product

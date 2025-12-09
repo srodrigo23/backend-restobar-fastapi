@@ -8,15 +8,16 @@ class ProductBase(SQLModel):
     """Base model for Product."""
     name: str = Field(max_length=100)
     description: str | None = Field(default=None, max_length=500)
+    price: float = Field(ge=0)
+    stock: int = Field(ge=0)
 
 class Product(ProductBase, table=True):
     """Product model for the database."""
-    id: int   | None = Field(default=None, primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
 
-class ProductCreate(Product):
-    """Product creation modeldsd."""
-    price: float | None = Field(default=None, ge=0)
-    stock: int | None = Field(default=None, ge=0)
+class ProductCreate(ProductBase):
+    """Product creation model."""
+    pass
 
 class ProductPublic(ProductBase):
     """Public model for Product."""

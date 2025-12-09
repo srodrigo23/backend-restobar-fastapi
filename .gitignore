@@ -2,4 +2,5 @@
 .venv
 
 .database.db
-*/__pycache__
+*/__pgit ycache__
+*.pyc
